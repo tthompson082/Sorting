@@ -15,21 +15,16 @@ def merge(arrA, arrB):
     i = 0
     j = 0
     k = 0
-    # loop while either i or j is smaller than arrA or arrB
     while i < len(arrA) and j < len(arrB):
-        # check if the item in arrA is smaller than the item in arrB
         if arrA[i] < arrB[j]:
-            # if it is then we set merged_arr[k] to it and increment k and i
             merged_arr[k] = arrA[i]
             k += 1
             i += 1
         else:
-            # otherwise we set it to arrB[j] and increment k and j
             merged_arr[k] = arrB[j]
             k += 1
             j += 1
 
-    # both of these while statements are for if all of either arrA or arrB are empty while the other isn't
     while i < len(arrA):
         merged_arr[k] = arrA[i]
         k += 1
@@ -39,7 +34,6 @@ def merge(arrA, arrB):
         merged_arr[k] = arrB[j]
         k += 1
         j += 1
-    # print(f"merged array: {merged_arr}")
     return merged_arr
 
 
@@ -49,14 +43,10 @@ def merge(arrA, arrB):
 
 def merge_sort(arr):
     # TO-DO
-    # only run the sort if the array is larger than 1 item
     if len(arr) > 1:
-        # find the middle of the array
         middle = len(arr) // 2
-        # set up recursion for the two halves of the array that we have split by passing each half into merge_sort; this will eventually result in arrays with only 1 index that will then be joined back together in the correct order
         left_half = merge_sort(arr[:middle])
         right_half = merge_sort(arr[middle:])
-        # return the merged array after passing in the left and right halves
         return merge(left_half, right_half)
     else:
         return arr
